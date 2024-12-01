@@ -21,6 +21,6 @@ public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeComm
         
         await _leaveTypeRepository.UpdateAsync(leaveTypeToUpdate);
         
-        return Unit.Value;
+        return Unit.Value; 
     }
 }
