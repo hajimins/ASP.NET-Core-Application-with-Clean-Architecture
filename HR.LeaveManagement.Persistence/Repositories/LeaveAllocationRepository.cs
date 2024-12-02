@@ -9,4 +9,34 @@ public class LeaveAllocationRepository : GenericRepository<LeaveAllocation>, ILe
     public LeaveAllocationRepository(HrDatabaseContext context) : base(context)
     {
     }
+
+    public Task<LeaveAllocation> GetLeaveAllocationWithDetails(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<LeaveAllocation>> GetLeaveAllocationsWithDetails()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<LeaveAllocation>> GetLeaveAllocationsWithDetails(string userId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> AllocationExists(string userId, int leaveTypeId, int period)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task AddAllocations(List<LeaveAllocation> allocations)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<LeaveAllocation> GetUserAllocations(string userId, int leaveTypeId)
+    {
+        throw new NotImplementedException();
+    }
 }
