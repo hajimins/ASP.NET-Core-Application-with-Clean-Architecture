@@ -1,7 +1,7 @@
 using FluentValidation;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 
-namespace HR.LeaveManagement.Application.Features.Commands.CreateLeaveType;
+namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveType;
 
 public class CreateLeaveTypeCommandValidator : AbstractValidator<CreateLeaveTypeCommand>
 {

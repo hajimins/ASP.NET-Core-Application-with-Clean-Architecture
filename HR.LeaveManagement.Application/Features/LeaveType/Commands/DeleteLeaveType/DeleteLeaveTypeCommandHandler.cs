@@ -4,7 +4,7 @@ using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Domain;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.Commands.DeleteLeaveType;
+namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.DeleteLeaveType;
 
 public class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeCommand, Unit>
 {

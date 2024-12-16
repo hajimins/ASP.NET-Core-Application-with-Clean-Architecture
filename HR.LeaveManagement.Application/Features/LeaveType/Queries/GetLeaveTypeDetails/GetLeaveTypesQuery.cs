@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.Queries.GetLeaveTypeDetails;
+namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 
 public class GetLeaveTypesQuery
 {

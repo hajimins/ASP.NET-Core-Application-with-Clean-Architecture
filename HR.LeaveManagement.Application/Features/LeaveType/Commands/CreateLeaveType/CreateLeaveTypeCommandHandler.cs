@@ -4,7 +4,7 @@ using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Domain;
 using MediatR;
 
-namespace HR.LeaveManagement.Application.Features.Commands.CreateLeaveType;
+namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveType;
 
 public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommand, int>
 {
