@@ -30,10 +30,10 @@ namespace HR.LeaveManagement.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("DateCreated")
+                    b.Property<DateTimeOffset?>("DateCreated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime?>("DateModified")
+                    b.Property<DateTimeOffset?>("DateModified")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("EmployeeId")
@@ -70,16 +70,16 @@ namespace HR.LeaveManagement.Persistence.Migrations
                     b.Property<bool>("Cancelled")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime?>("DateCreated")
+                    b.Property<DateTimeOffset?>("DateCreated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime?>("DateModified")
+                    b.Property<DateTimeOffset?>("DateModified")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("DateRequested")
+                    b.Property<DateTimeOffset>("DateRequested")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTimeOffset>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("LeaveTypeId")
@@ -92,7 +92,7 @@ namespace HR.LeaveManagement.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTimeOffset>("StartDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -110,10 +110,10 @@ namespace HR.LeaveManagement.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("DateCreated")
+                    b.Property<DateTimeOffset?>("DateCreated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime?>("DateModified")
+                    b.Property<DateTimeOffset?>("DateModified")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("DefaultDays")
@@ -132,8 +132,8 @@ namespace HR.LeaveManagement.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 12, 16, 20, 21, 7, 732, DateTimeKind.Local).AddTicks(2900),
-                            DateModified = new DateTime(2024, 12, 16, 20, 21, 7, 755, DateTimeKind.Local).AddTicks(6260),
+                            DateCreated = new DateTimeOffset(new DateTime(2025, 1, 7, 13, 17, 40, 783, DateTimeKind.Unspecified).AddTicks(9780), new TimeSpan(0, 4, 0, 0, 0)),
+                            DateModified = new DateTimeOffset(new DateTime(2025, 1, 7, 13, 17, 40, 794, DateTimeKind.Unspecified).AddTicks(3520), new TimeSpan(0, 4, 0, 0, 0)),
                             DefaultDays = 10,
                             Name = "Vacation"
                         });

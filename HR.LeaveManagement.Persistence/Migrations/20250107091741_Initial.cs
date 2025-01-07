@@ -20,8 +20,8 @@ namespace HR.LeaveManagement.Persistence.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     DefaultDays = table.Column<int>(type: "integer", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DateModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    DateCreated = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    DateModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,8 +38,8 @@ namespace HR.LeaveManagement.Persistence.Migrations
                     LeaveTypeId = table.Column<int>(type: "integer", nullable: false),
                     Period = table.Column<int>(type: "integer", nullable: false),
                     EmployeeId = table.Column<string>(type: "text", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DateModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    DateCreated = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    DateModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,16 +58,16 @@ namespace HR.LeaveManagement.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    StartDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    EndDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     LeaveTypeId = table.Column<int>(type: "integer", nullable: false),
-                    DateRequested = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateRequested = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     RequestComments = table.Column<string>(type: "text", nullable: true),
                     Approved = table.Column<bool>(type: "boolean", nullable: true),
                     Cancelled = table.Column<bool>(type: "boolean", nullable: false),
                     RequestingEmployeeId = table.Column<string>(type: "text", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DateModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    DateCreated = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    DateModified = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,7 +83,7 @@ namespace HR.LeaveManagement.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
                 columns: new[] { "Id", "DateCreated", "DateModified", "DefaultDays", "Name" },
-                values: new object[] { 1, new DateTime(2024, 12, 16, 20, 21, 7, 732, DateTimeKind.Local).AddTicks(2900), new DateTime(2024, 12, 16, 20, 21, 7, 755, DateTimeKind.Local).AddTicks(6260), 10, "Vacation" });
+                values: new object[] { 1, new DateTimeOffset(new DateTime(2025, 1, 7, 13, 17, 40, 783, DateTimeKind.Unspecified).AddTicks(9780), new TimeSpan(0, 4, 0, 0, 0)), new DateTimeOffset(new DateTime(2025, 1, 7, 13, 17, 40, 794, DateTimeKind.Unspecified).AddTicks(3520), new TimeSpan(0, 4, 0, 0, 0)), 10, "Vacation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveAllocations_LeaveTypeId",
