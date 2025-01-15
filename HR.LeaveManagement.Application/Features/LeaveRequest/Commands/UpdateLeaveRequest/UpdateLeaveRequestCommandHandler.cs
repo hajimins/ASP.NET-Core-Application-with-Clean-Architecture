@@ -1,5 +1,6 @@
 using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Email;
+using HR.LeaveManagement.Application.Contracts.Logging;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Models.Email;
@@ -13,14 +14,17 @@ public class UpdateLeaveRequestCommandHandler : IRequestHandler<UpdateLeaveReque
     private readonly IEmailSender _emailSender;
     private readonly ILeaveRequestRepository _leaveRequestRepository;
     private readonly ILeaveTypeRepository _leaveTypeRepository;
+    private readonly IAppLogger<UpdateLeaveRequestCommandHandler> _appLogger;
     
     public UpdateLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository,
-        ILeaveTypeRepository leaveTypeRepository, IMapper mapper, IEmailSender emailSender)
+        ILeaveTypeRepository leaveTypeRepository, IMapper mapper, IEmailSender emailSender, 
+        IAppLogger<UpdateLeaveRequestCommandHandler> appLogger)
     {
         this._leaveRequestRepository = leaveRequestRepository;
         this._leaveTypeRepository = leaveTypeRepository;
         this._emailSender = emailSender;
         this._mapper = mapper;
+        this._appLogger = appLogger;
     }
     public async Task<Unit> Handle(UpdateLeaveRequestCommand request, CancellationToken cancellationToken)
     {
@@ -39,15 +43,22 @@ public class UpdateLeaveRequestCommandHandler : IRequestHandler<UpdateLeaveReque
         
         await _leaveRequestRepository.UpdateAsync(leaveRequest);
 
-        var email = new EmailMessage
+        try
         {
-            To = string.Empty,
-            Body = $"Your leave request for {request.StartDate:D} to {request.EndDate:D} " +
-                   $"has been updated successfully.",
-            Subject = "Leave Request Submitted"
-        };
+            var email = new EmailMessage
+            {
+                To = string.Empty,
+                Body = $"Your leave request for {request.StartDate:D} to {request.EndDate:D} " +
+                       $"has been updated successfully.",
+                Subject = "Leave Request Submitted"
+            };
 
-        await _emailSender.SendEmail(email);
+            await _emailSender.SendEmail(email);
+        }
+        catch(Exception ex)
+        {
+            _appLogger.LogWarning(ex.Message);
+        }
         
         return Unit.Value;
     }
